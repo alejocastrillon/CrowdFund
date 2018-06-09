@@ -14,3 +14,12 @@
  *= require_self
  */
 @import "semantic-ui";
+
+thead{
+    text-align: center;
+}
+
+a:hover{
+    background-color: transparent !important;
+    transition: font-size 12s;   
+}
