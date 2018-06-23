@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
 
@@ -7,7 +6,9 @@
     <tr>
       <th>Titulo</th>
       <th>Cuerpo</th>
-      <th colspan="3"><i class="pencil alternate icon"></i> Acciones</th>
+      <% if user_signed_in? %>
+        <th colspan="3"><i class="pencil alternate icon"></i> Acciones</th>
+      <% end %>
     </tr>
   </thead>
 
@@ -16,9 +17,11 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.body %></td>
-        <td class="positive"><%= link_to semantic_icon('eye')+'Ver', post %></td>
-        <td class="warning"><%= link_to semantic_icon('pencil')+'Editar', edit_post_path(post) %></td>
-        <td class="negative"><%= link_to semantic_icon('trash')+'Eliminar', post, method: :delete, data: { confirm: 'Esta segunro desea eliminar el post '+post.title+'?' } %></td>
+        <% if user_signed_in? %>
+          <td class="positive"><%= link_to semantic_icon('eye')+'Ver', post %></td>
+          <td class="warning"><%= link_to semantic_icon('pencil')+'Editar', edit_post_path(post) %></td>
+          <td class="negative"><%= link_to semantic_icon('trash')+'Eliminar', post, method: :delete, data: { confirm: 'Esta segunro desea eliminar el post '+post.title+'?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +29,6 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>

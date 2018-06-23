@@ -31,6 +31,9 @@ gem 'mongoid', '~> 6.1.0'
 #Add semantic UI gem
 gem 'semantic-ui-sass'
 
+#Add Devise gem
+gem 'devise', '~> 4.4', '>= 4.4.3'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
