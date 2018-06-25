@@ -14,11 +14,18 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    if user_signed_in?
+      @post = Post.new
+    else
+      redirect_to login_path, :alert => "Necesitas iniciar sesion para registrar un post"
+    end
   end
 
   # GET /posts/1/edit
   def edit
+    if !user_signed_in?
+      redirect_to login_path, :alert => "Necesitas iniciar sesion para editar un post"
+    end
   end
 
   # POST /posts
